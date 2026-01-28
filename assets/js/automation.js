@@ -1,6 +1,7 @@
 /**
  * ===== SYSTÈME D'AUTOMATISATION LOVE PAGE =====
  * Génération automatique des love pages et codes QR
+ * Dépend de: config.js, admin.js, auth.js
  */
 
 // Formulaire de création rapide
@@ -238,7 +239,14 @@ const AutomationUI = {
 
 // Initialiser au chargement
 document.addEventListener('DOMContentLoaded', () => {
-    if (SessionManager.isValidSession()) {
-        setTimeout(() => AutomationUI.init(), 500);
-    }
+    // Attendre que SessionManager soit disponible
+    const checkSession = setInterval(() => {
+        if (typeof SessionManager !== 'undefined' && SessionManager.isValidSession && SessionManager.isValidSession()) {
+            clearInterval(checkSession);
+            setTimeout(() => AutomationUI.init(), 500);
+        }
+    }, 100);
+    
+    // Timeout après 3 secondes
+    setTimeout(() => clearInterval(checkSession), 3000);
 });

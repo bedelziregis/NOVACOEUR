@@ -1,16 +1,8 @@
 /**
  * ===== SYSTÈME D'AUTHENTIFICATION ADMIN SIMPLIFIÉ =====
- * Note: Utilise le SessionManager défini dans admin.js
+ * Note: Utilise SessionManager et AUTH_CREDENTIALS définis dans admin.js
+ * Cet ordre est important dans admin.html: config → admin → auth → automation
  */
-
-// Identifiants par défaut (à modifier en production)
-const ADMIN_CREDENTIALS = {
-    username: 'nova',
-    password: 'Nov123@@@'
-};
-
-// Session key
-const SESSION_KEY = 'novacoeur_admin_session';
 
 /**
  * Initialiser l'authentification
@@ -58,7 +50,8 @@ function checkAuthentication() {
  * Vérifier si l'utilisateur est authentifié
  */
 function isUserAuthenticated() {
-    const session = localStorage.getItem(SESSION_KEY);
+    // Utiliser SESSION_KEY défini dans admin.js
+    const session = localStorage.getItem(SESSION_KEY || 'novacoeur_admin_session');
     if (!session) return false;
     
     try {
@@ -89,15 +82,20 @@ function handleLogin(e) {
         return;
     }
     
-    // Vérifier les identifiants
-    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
-        // Créer une session
-        const session = {
-            token: 'token_' + Math.random().toString(36).substr(2, 9) + Date.now(),
-            startTime: Date.now(),
-            expiresAt: Date.now() + (24 * 60 * 60 * 1000) // 24 heures
-        };
-        localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    // Vérifier les identifiants (utiliser AUTH_CREDENTIALS défini dans admin.js)
+    if (username === AUTH_CREDENTIALS.username && password === AUTH_CREDENTIALS.password) {
+        // Créer une session via SessionManager
+        if (SessionManager && SessionManager.startSession) {
+            SessionManager.startSession();
+        } else {
+            // Fallback si SessionManager n'est pas disponible
+            const session = {
+                token: 'token_' + Math.random().toString(36).substr(2, 9) + Date.now(),
+                startTime: Date.now(),
+                expiresAt: Date.now() + (24 * 60 * 60 * 1000)
+            };
+            localStorage.setItem(SESSION_KEY || 'novacoeur_admin_session', JSON.stringify(session));
+        }
         
         // Nettoyer le formulaire
         document.getElementById('login-form').reset();

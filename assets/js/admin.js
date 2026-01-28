@@ -1119,3 +1119,16 @@ function setupLogout() {
     
     console.log('[NOVACOEUR] ✓ Logout handler configuré');
 }
+
+// ===== EXPOSITION GLOBALE =====
+// Rendre les objets essentiels accessibles à d'autres scripts
+window.ADMIN_CONFIG = {
+    AUTH_CREDENTIALS: AUTH_CREDENTIALS,
+    SESSION_KEY: SESSION_KEY,
+    SESSION_TIMEOUT: SESSION_TIMEOUT,
+    SessionManager: SessionManager
+};
+
+// Logs de confirmation
+console.log('✅ [NOVACOEUR] admin.js chargé');
+console.log('✅ [NOVACOEUR] SessionManager disponible globalement');
