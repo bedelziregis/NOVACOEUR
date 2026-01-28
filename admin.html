@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - NOVACOEUR</title>
+    <link rel="icon" href="assets/images/logo/logo.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-page">
+    <!-- Login Modal -->
+    <div id="login-modal" class="login-modal">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="login-logo">NOVACOEUR</div>
+                <p class="login-subtitle">Espace Admin Sécurisé</p>
+            </div>
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="username">Identifiant</label>
+                    <input type="text" id="username" placeholder="Entrez votre pseudo" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" placeholder="Entrez votre mot de passe" required>
+                </div>
+                <button type="submit" class="btn-login">
+                    <i class="fas fa-lock"></i> Connexion
+                </button>
+                <div id="login-error" class="login-error" style="display: none;"></div>
+            </form>
+            <p class="login-footer">© 2026 NOVACOEUR - L'art numérique de l'amour</p>
+        </div>
+    </div>
+
+    <!-- Main Admin Interface (Hidden until login) -->
+    <div id="admin-interface" style="display: none;">
+    <!-- Navigation Admin -->
+    <nav class="admin-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">NOVACOEUR <span class="admin-badge">Admin</span></a>
+            <div class="nav-links">
+                <a href="index.html">Retour</a>
+                <a href="#" id="logout-btn">Déconnexion</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="admin-container">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <div class="sidebar-section">
+                    <h3>Navigation</h3>
+                    <ul class="sidebar-menu">
+                        <li><a href="#" data-tab="dashboard" class="menu-item active"><i class="fas fa-chart-line"></i> Tableau de bord</a></li>
+                        <li><a href="#" data-tab="new-page" class="menu-item"><i class="fas fa-plus-circle"></i> Nouvelle page</a></li>
+                        <li><a href="#" data-tab="manage-pages" class="menu-item"><i class="fas fa-list"></i> Gérer les pages</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Content Area -->
+            <section class="admin-content">
+                <!-- Dashboard Tab -->
+                <div id="dashboard" class="admin-tab active">
+                    <div class="tab-header">
+                        <h1>Tableau de bord</h1>
+                        <p class="tab-subtitle">Bienvenue dans votre espace de gestion</p>
+                    </div>
+
+                    <div class="dashboard-cards">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                            <div class="stat-content">
+                                <h4>Pages créées</h4>
+                                <p class="stat-number" id="total-pages">0</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-star"></i></div>
+                            <div class="stat-content">
+                                <h4>Offre 1 - Éclat Simple</h4>
+                                <p class="stat-number" id="count-offer-1">0</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-heart"></i></div>
+                            <div class="stat-content">
+                                <h4>Offre 2 - Émotion Complète</h4>
+                                <p class="stat-number" id="count-offer-2">0</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-crown"></i></div>
+                            <div class="stat-content">
+                                <h4>Offre 3 - Infini Amoureux</h4>
+                                <p class="stat-number" id="count-offer-3">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Automation Section -->
+                    <div id="automation-container"></div>
+
+                    <div class="quick-actions">
+                        <h3>Actions rapides</h3>
+                        <button class="btn btn-primary" id="new-page-quick">+ Créer une nouvelle page</button>
+                        <button class="btn btn-secondary" id="open-media-debug" style="margin-left:8px;">Debug médias</button>
+                    </div>
+                </div>
+
+                <!-- New Page Tab -->
+                <div id="new-page" class="admin-tab">
+                    <div class="tab-header">
+                        <h1>Créer une nouvelle page d'amour</h1>
+                        <p class="tab-subtitle">Remplissez les informations pour générer une page unique</p>
+                    </div>
+
+                    <form class="form-new-page" id="form-new-page">
+                        <!-- Section 1: Infos de base -->
+                        <div class="form-section">
+                            <h3><i class="fas fa-user"></i> Informations du client</h3>
+                            
+                            <div class="form-group">
+                                <label for="client-name">Nom du client *</label>
+                                <input type="text" id="client-name" name="client-name" placeholder="Ex: Marie & Jean" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="client-email">Email du client *</label>
+                                <input type="email" id="client-email" name="client-email" placeholder="email@example.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="offer-type">Choisir l'offre *</label>
+                                <select id="offer-type" name="offer-type" required>
+                                    <option value="">-- Sélectionner une offre --</option>
+                                    <option value="1">Offre 1 - Éclat Simple</option>
+                                    <option value="2">Offre 2 - Émotion Complète</option>
+                                    <option value="3">Offre 3 - Infini Amoureux</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Section 2: Message texte -->
+                        <div class="form-section">
+                            <h3><i class="fas fa-pen-fancy"></i> Message personnalisé</h3>
+                            
+                            <div class="form-group">
+                                <label for="message">Message d'amour *</label>
+                                <textarea id="message" name="message" placeholder="Écrivez votre message d'amour..." rows="6" required></textarea>
+                                <span class="char-count"><span id="char-count">0</span>/500</span>
+                            </div>
+                        </div>
+
+                        <!-- Section 3: Photos -->
+                        <div class="form-section" id="photos-section">
+                            <h3><i class="fas fa-image"></i> Photos</h3>
+                            <p class="section-hint" id="photos-hint">Max 5 photos pour cette offre</p>
+                            
+                            <div class="photos-upload">
+                                <div class="upload-area" id="upload-area-photos">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Glissez vos photos ici ou cliquez pour sélectionner</p>
+                                    <input type="file" id="photos-input" name="photos-input" accept="image/*" multiple hidden>
+                                </div>
+                            </div>
+
+                            <div class="photos-list" id="photos-list"></div>
+                        </div>
+
+                        <!-- Section 4: Vidéos -->
+                        <div class="form-section" id="videos-section" style="display:none;">
+                            <h3><i class="fas fa-video"></i> Vidéos personnelles</h3>
+                            <p class="section-hint" id="videos-hint">Max 1 vidéo pour cette offre</p>
+                            
+                            <div class="videos-upload">
+                                <div class="upload-area" id="upload-area-videos">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Glissez votre vidéo ici ou cliquez pour sélectionner</p>
+                                    <input type="file" id="videos-input" name="videos-input" accept="video/*" multiple hidden>
+                                </div>
+                            </div>
+
+                            <div class="videos-list" id="videos-list"></div>
+                        </div>
+
+                        <!-- Section 5: Musique -->
+                        <div class="form-section" id="music-section" style="display:none;">
+                            <h3><i class="fas fa-music"></i> Musique de fond</h3>
+                            
+                            <div class="form-group">
+                                <label for="custom-music">Charger votre musique</label>
+                                <p class="form-hint">Formats acceptés: MP3, WAV, OGG</p>
+                                <div class="upload-area" id="upload-area-music" style="margin-top:10px;">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Cliquez ou déposez votre fichier audio</p>
+                                </div>
+                                <input type="file" id="custom-music" name="custom-music" accept="audio/*" style="display:none;">
+                                <div id="custom-music-display" style="margin-top:15px;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="form-actions">
+                            <button type="reset" class="btn btn-secondary">Réinitialiser</button>
+                            <button type="button" class="btn btn-info" id="preview-btn">Aperçu</button>
+                            <button type="submit" class="btn btn-primary">Créer la page d'amour</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Manage Pages Tab -->
+                <div id="manage-pages" class="admin-tab">
+                    <div class="tab-header">
+                        <h1>Gérer les pages d'amour</h1>
+                        <p class="tab-subtitle">Consultez, modifiez ou supprimez vos pages créées</p>
+                    </div>
+
+                    <div class="pages-list" id="pages-list">
+                        <p class="no-data">Aucune page créée pour le moment</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal Preview -->
+    <div id="preview-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <button class="modal-close" id="close-preview">&times;</button>
+            <div id="preview-container"></div>
+        </div>
+    </div>
+    
+    <!-- Media Debug Modal -->
+    <div id="media-debug-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <button class="modal-close" id="close-media-debug">&times;</button>
+            <h2>Debug Médias</h2>
+            <div id="media-debug-container" style="max-height:60vh; overflow:auto;"></div>
+        </div>
+    </div>
+    </div><!-- Fin admin-interface -->
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/admin.js"></script>
+    <script src="assets/js/automation.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'amour - NOVACOEUR</title>
+    <link rel="icon" href="assets/images/logo/logo.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/love-page-premium.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="love-page">
+
+    <!-- Navigation Simple -->
+    <nav class="love-nav-premium">
+        <div class="nav-premium-container">
+            <a href="index.html" class="nav-premium-logo">
+                <img src="assets/images/logo/logo.png" alt="NOVACOEUR Logo">
+                <div>
+                    <div class="nav-premium-brand">NOVACOEUR</div>
+                    <div class="nav-premium-badge">LOVE STORY</div>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Premium Minimal -->
+    <header class="hero-premium">
+        <div class="hero-premium-content">
+            <h1 id="page-title" class="hero-premium-title">Notre histoire</h1>
+            <p id="page-subtitle" class="hero-premium-subtitle">Chaque moment compte</p>
+            <button id="share-btn" class="share-btn" style="display:none;">
+                <i class="fas fa-share-alt"></i> Partager
+            </button>
+        </div>
+        <div class="hero-premium-line"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="love-main-premium">
+        
+        <!-- Client Header Section -->
+        <section class="client-header-premium">
+            <div class="client-header-content">
+                <h2 id="client-display-name" class="client-name-premium">Leurs Moments ❤️</h2>
+                <p class="client-description-premium">Une création NOVACOEUR</p>
+            </div>
+        </section>
+
+        <!-- Photos Gallery Section - FEATURED -->
+        <section class="gallery-section-premium" id="photos-section">
+            <div class="gallery-container-premium">
+                <h3 class="gallery-title-premium">NOS MOMENTS FORT</h3>
+                <div class="gallery-grid-premium" id="photos-gallery">
+                    <div class="gallery-placeholder-premium">
+                        <p>Les photos s'afficheront ici</p>
+                    </div>
+                </div>
+
+                <!-- Lightbox Modal -->
+                <div id="lightbox" class="lightbox-premium" style="display:none;">
+                    <div class="lightbox-premium-content">
+                        <button class="lightbox-premium-close">&times;</button>
+                        <button class="lightbox-premium-prev"><i class="fas fa-chevron-left"></i></button>
+                        <img id="lightbox-img" src="" alt="">
+                        <button class="lightbox-premium-next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Message Section -->
+        <section class="message-premium-section">
+            <div class="message-premium-container">
+                <h3 class="message-premium-title">Message</h3>
+                <p id="love-message" class="message-premium-text">Votre message d'amour s'affichera ici...</p>
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section class="videos-premium-section" id="videos-section" style="display:none;">
+            <div class="videos-premium-container">
+                <h3 class="videos-premium-title">Vidéos</h3>
+                <div class="videos-grid-premium" id="videos-container">
+                    <!-- Videos will be added here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Music Section -->
+        <section class="music-premium-section" id="music-section" style="display:none;">
+            <div class="music-premium-container">
+                <h3 class="music-premium-title">Bande Sonore</h3>
+                <div class="music-premium-player">
+                    <audio id="background-music" controls>
+                        <source src="" type="audio/mpeg">
+                        Votre navigateur ne supporte pas la lecture audio.
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offer Info Section -->
+        <section class="offer-premium-section">
+            <div class="offer-premium-container">
+                <div class="offer-premium-badge" id="offer-badge">Offre 1 - Éclat Simple</div>
+                <p class="offer-premium-text">Créée avec amour par NOVACOEUR</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-premium">
+        <div class="footer-premium-content">
+            <p>&copy; 2026 NOVACOEUR - L'art numérique de l'amour</p>
+            <p class="footer-premium-tagline">Vivez votre histoire</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/love-page.js"></script>
+</body>
+</html>

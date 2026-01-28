@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique - NOVACOEUR</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="boutique-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">NOVACOEUR</a>
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="boutique.html" class="active">Boutique</a>
+                <a href="admin.html" class="admin-link" title="Espace Admin"><i class="fas fa-cog"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section Boutique -->
+    <header class="boutique-hero">
+        <div class="hero-content">
+            <h1>Choisissez l'expérience d'amour parfaite</h1>
+            <p class="hero-subtitle">Une déclaration unique, plusieurs façons de l'offrir</p>
+        </div>
+    </header>
+
+    <!-- Section Offres -->
+    <main class="boutique-main">
+        <div class="container">
+            <!-- Titre section -->
+            <div class="section-header">
+                <h2><i class="fas fa-heart"></i> Nos offres premium</h2>
+                <p class="section-subtitle">Sélectionnez le format qui correspond à votre déclaration</p>
+            </div>
+
+            <!-- Grille des articles -->
+            <div class="articles-grid">
+                
+                <!-- Article 1 - BASIC -->
+                <article class="article-card" data-id="1">
+                    <div class="article-badge">Populaire</div>
+                    <div class="article-header">
+                        <h3>Éclat Simple</h3>
+                        <div class="article-price">
+                            <span class="price">7.000FCFA</span>
+                            <span class="price-note">une fois</span>
+                        </div>
+                    </div>
+                    <div class="article-features">
+                        <p><i class="fas fa-check"></i> Un t-shirt</p>
+                        <p><i class="fas fa-check"></i> QR code (page personnelle)</p>
+                        <p><i class="fas fa-check"></i> Message texte personnalisé</p>
+                        <p><i class="fas fa-check"></i> 5 photos incluses</p>
+                        <p><i class="fas fa-times"></i> Vidéo personnelle</p>
+                        <p><i class="fas fa-times"></i> Musique de fond</p>
+                    </div>
+                   <button class="article-btn" data-article="Éclat Simple">
+    <i class="fas fa-shopping-cart"></i> Choisir cette offre
+</button>
+    <i class="fas fa-shopping-cart"></i> Choisir cette offre
+</a>
+                </article>
+
+                <!-- Article 2 - PREMIUM -->
+                <article class="article-card featured" data-id="2">
+                    <div class="article-badge">Recommandé</div>
+                    <div class="article-header">
+                        <h3>Émotion Complète</h3>
+                        <div class="article-price">
+                            <span class="price">10.000FCFA</span>
+                            <span class="price-note">une fois</span>
+                        </div>
+                    </div>
+                    <div class="article-features">
+                        <p><i class="fas fa-check"></i> Un t-shirt personalisé</p>
+                        <p><i class="fas fa-check"></i> QR code (page personnelle)</p>
+                        <p><i class="fas fa-check"></i> Message texte personnalisé</p>
+                        <p><i class="fas fa-check"></i> 15 photos incluses</p>
+                        <p><i class="fas fa-check"></i> vidéo personnelle</p>
+                        <p><i class="fas fa-check"></i> Musique de fond au choix</p>
+                    </div>
+                   <button class="article-btn primary" data-article="Émotion Complète">
+    <i class="fas fa-gem"></i> Offre la plus choisie
+</button>
+                </article>
+
+                <!-- Article 3 - LUXE -->
+                <article class="article-card" data-id="3">
+                    <div class="article-header">
+                        <h3>Infini Amoureux</h3>
+                        <div class="article-price">
+                            <span class="price">18.000FCFA</span>
+                            <span class="price-note">une fois</span>
+                        </div>
+                    </div>
+                    <div class="article-features">
+                        <p><i class="fas fa-check"></i> 2 t-shirts personalisé</p>
+                        <p><i class="fas fa-check"></i> QR code (page personnelle) pour les 2 t-shirts</p>
+                        <p><i class="fas fa-check"></i> Message texte personnalisé</p>
+                        <p><i class="fas fa-check"></i> 20 photos incluses</p>
+                        <p><i class="fas fa-check"></i> 3 vidéos personnelles</p>
+                        <p><i class="fas fa-check"></i> Musique de fond au choix</p>
+                    </div>
+                   <button class="article-btn" data-article="Infini Amoureux">
+    <i class="fas fa-crown"></i> L'expérience ultime
+</button>
+                  </article>
+            </div>
+
+            <!-- Section Processus -->
+            <div class="process-section">
+                <h2><i class="fas fa-magic"></i> Comment ça marche ?</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Choisissez votre offre</h3>
+                        <p>Sélectionnez le package qui correspond à votre projet d'amour</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Personnalisez votre page</h3>
+                        <p>Envoyez-nous vos photos, vidéos et message via l'interface admin</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Recevez le QR code</h3>
+                        <p>Nous créons votre page et vous envoyons le QR code à imprimer sur votre t-shirt</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Offrez la surprise</h3>
+                        <p>Votre proche scanne le QR et découvre votre déclaration !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="boutique-footer">
+        <div class="footer-content">
+            <div class="footer-logo">NOVACOEUR</div>
+            <p>Transformez vos émotions en moments inoubliables</p>
+            <div class="footer-links">
+                <a href="index.html">Accueil</a>
+                <a href="boutique.html">Boutique</a>
+                <a href="mailto:bedelziregis@gmail.com">Contact</a>
+            </div>
+            <p class="footer-copyright">© 2024 NOVACOEUR. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+  <!-- Script pour la boutique -->
+<script>
+    // Numéro WhatsApp (format international)
+    const whatsappNumber = "2250564896589";
+    
+    // Fonction pour rediriger vers WhatsApp
+    function redirectToWhatsApp(articleName) {
+        // Message prédéfini
+        const message = `Bonjour, je suis intéressé(e) par l'offre : "${articleName}" sur NOVACOEUR. Pourriez-vous m'aider à finaliser ma commande ?`;
+        
+        // Encoder le message pour l'URL
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Créer l'URL WhatsApp
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+        
+        // Rediriger vers WhatsApp
+        window.open(whatsappURL, '_blank');
+    }
+    
+    // Sélection des offres
+    document.querySelectorAll('.article-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const articleName = this.getAttribute('data-article');
+            
+            // Redirection vers WhatsApp
+            redirectToWhatsApp(articleName);
+            
+            // Animation de feedback (optionnelle)
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+    });
+    
+    // Animation au scroll (conservée)
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+            }
+        });
+    }, observerOptions);
+    
+    // Observer les cartes d'articles
+    document.querySelectorAll('.article-card').forEach(card => {
+        observer.observe(card);
+    });
+</script>
+</body>
+</html>
