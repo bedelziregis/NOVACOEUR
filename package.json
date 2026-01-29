@@ -2,9 +2,9 @@
   "name": "novacoeur",
   "version": "1.0.0",
   "description": "NOVACOEUR - Backend API for love pages",
-  "main": "server.js",
+  "main": "server-mongodb.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server-mongodb.js",
     "start:mongodb": "node server-mongodb.js",
     "dev": "nodemon server.js",
     "dev:mongodb": "nodemon server-mongodb.js"
