@@ -21,13 +21,62 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/novaco
 const LovePage = require('./models/LovePage');
 
 // ===== CONNEXION MONGODB =====
-mongoose.connect(MONGODB_URI)
+const DB_USER = process.env.DB_USER;
+const DB_PASS = process.env.DB_PASS;
+
+let effectiveUri = MONGODB_URI;
+
+try {
+    // If DB_USER/DB_PASS provided, construct URI with encoded password (safer than embedding raw password)
+    if (DB_USER && DB_PASS) {
+        const encodedPass = encodeURIComponent(DB_PASS);
+        if (effectiveUri && effectiveUri.startsWith('mongodb')) {
+            const prefixIndex = effectiveUri.indexOf('//');
+            const prefix = prefixIndex !== -1 ? effectiveUri.slice(0, prefixIndex + 2) : 'mongodb://';
+            const rest = prefixIndex !== -1 ? effectiveUri.slice(prefixIndex + 2) : effectiveUri;
+            const atIndex = rest.indexOf('@');
+            const hostAndParams = atIndex !== -1 ? rest.slice(atIndex + 1) : rest;
+            effectiveUri = `${prefix}${DB_USER}:${encodedPass}@${hostAndParams}`;
+        } else {
+            effectiveUri = `mongodb://${DB_USER}:${encodedPass}@localhost:27017/novacoeur`;
+        }
+        console.log('ℹ️  [NOVACOEUR] Utilisation de DB_USER/DB_PASS fournis via les variables d\'environnement (mot de passe encodé).');
+    } else {
+        // Fallback: if the URI contains an unencoded password with extra '@', attempt to encode it
+        if (effectiveUri && effectiveUri.startsWith('mongodb')) {
+            const prefixIndex = effectiveUri.indexOf('//');
+            if (prefixIndex !== -1) {
+                const prefix = effectiveUri.slice(0, prefixIndex + 2);
+                const rest = effectiveUri.slice(prefixIndex + 2);
+                const firstAt = rest.indexOf('@');
+                const lastAt = rest.lastIndexOf('@');
+                if (firstAt !== -1 && lastAt !== firstAt) {
+                    const credentials = rest.slice(0, lastAt);
+                    const hostAndParams = rest.slice(lastAt + 1);
+                    const colonIndex = credentials.indexOf(':');
+                    if (colonIndex !== -1) {
+                        const user = credentials.slice(0, colonIndex);
+                        const pass = credentials.slice(colonIndex + 1);
+                        const encodedPass = encodeURIComponent(pass);
+                        effectiveUri = `${prefix}${user}:${encodedPass}@${hostAndParams}`;
+                        console.log('ℹ️  [NOVACOEUR] Mot de passe Mongo détecté avec caractères spéciaux — encodage appliqué.');
+                    }
+                }
+            }
+        }
+    }
+} catch (procErr) {
+    console.warn('⚠️  [NOVACOEUR] Erreur lors du traitement de la chaîne Mongo:', procErr.message);
+}
+
+mongoose.connect(effectiveUri)
 .then(() => {
     console.log('✅ [NOVACOEUR] Connecté à MongoDB');
 })
 .catch(err => {
     console.error('❌ [NOVACOEUR] Erreur MongoDB:', err.message);
     console.warn('⚠️  Fonctionnement sans MongoDB (mode fallback)');
+    console.warn('ℹ️  Astuce: si votre mot de passe contient des caractères spéciaux (ex: @), encodez-les dans la chaîne de connexion (ex: @ -> %40) ou fournissez `DB_USER`/`DB_PASS` séparés.');
 });
 
 // Security & CORS Middleware
