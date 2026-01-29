@@ -240,7 +240,7 @@ const DataStore = {
         const payload = {
             clientName: pageData.clientName,
             clientEmail: pageData.clientEmail,
-            offerType: pageData.offerType,
+            offer: pageData.offerType,
             message: pageData.message,
             photos: photosMeta,
             videos: videosMeta,

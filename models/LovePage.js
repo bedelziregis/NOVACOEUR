@@ -8,7 +8,6 @@ const mongoose = require('mongoose');
 const lovePageSchema = new mongoose.Schema({
     id: {
         type: Number,
-        unique: true,
         required: true,
         default: () => Date.now()
     },
@@ -73,11 +72,14 @@ const lovePageSchema = new mongoose.Schema({
 // Index pour les recherches rapides
 lovePageSchema.index({ clientName: 1 });
 lovePageSchema.index({ createdAt: -1 });
-lovePageSchema.index({ id: 1 });
+lovePageSchema.index({ id: 1 }, { unique: true });
 
 // Middleware pour mettre à jour updatedAt
 lovePageSchema.pre('save', function(next) {
-    this.updatedAt = Date.now();
+    if (this.isNew) {
+        this.createdAt = new Date();
+    }
+    this.updatedAt = new Date();
     next();
 });
 

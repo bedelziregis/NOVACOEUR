@@ -7,7 +7,7 @@
 // Détecter si on est en local ou en production
 const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 let API_BASE_URL = isLocalhost 
-    ? 'http://localhost:3001'
+    ? 'http://localhost:5500'
     : `${window.location.protocol}//${window.location.host}`;
 
 if (!API_BASE_URL || API_BASE_URL === 'undefined') {

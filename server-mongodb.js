@@ -13,18 +13,15 @@ const path = require('path');
 const QRCode = require('qrcode');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
-const DOMAIN = process.env.DOMAIN || 'http://localhost:3001';
+const PORT = process.env.PORT || 5500;
+const DOMAIN = process.env.DOMAIN || 'http://localhost:5500';
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/novacoeur';
 
 // Import Models
 const LovePage = require('./models/LovePage');
 
 // ===== CONNEXION MONGODB =====
-mongoose.connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect(MONGODB_URI)
 .then(() => {
     console.log('✅ [NOVACOEUR] Connecté à MongoDB');
 })
