@@ -74,15 +74,6 @@ lovePageSchema.index({ clientName: 1 });
 lovePageSchema.index({ createdAt: -1 });
 lovePageSchema.index({ id: 1 }, { unique: true });
 
-// Middleware pour mettre à jour updatedAt
-lovePageSchema.pre('save', function(next) {
-    if (this.isNew) {
-        this.createdAt = new Date();
-    }
-    this.updatedAt = new Date();
-    next();
-});
-
 // Créer et exporter le modèle
 const LovePage = mongoose.model('LovePage', lovePageSchema);
 
